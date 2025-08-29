@@ -17,10 +17,25 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\SecurityScheme;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
-
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
+#[CoversClass(Components::class)]
+#[CoversClass(Example::class)]
+#[CoversClass(Header::class)]
+#[CoversClass(Link::class)]
+#[CoversClass(OAuthFlow::class)]
+#[CoversClass(Operation::class)]
+#[CoversClass(Parameter::class)]
+#[CoversClass(PathItem::class)]
+#[CoversClass(RequestBody::class)]
+#[CoversClass(Response::class)]
+#[CoversClass(Schema::class)]
+#[CoversClass(SecurityScheme::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class ComponentsTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function create_with_all_parameters_works()
     {
         $schema = Schema::object('ExampleSchema');

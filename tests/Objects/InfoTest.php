@@ -9,10 +9,18 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\Info;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\License;
 use GoldSpecDigital\ObjectOrientedOAS\OpenApi;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(Contact::class)]
+#[CoversClass(Info::class)]
+#[CoversClass(License::class)]
+#[CoversClass(OpenApi::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class InfoTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function create_with_all_parameters_works()
     {
         $info = Info::create()

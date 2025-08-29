@@ -23,10 +23,33 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\SecurityScheme;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Server;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Tag;
 use GoldSpecDigital\ObjectOrientedOAS\OpenApi;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(ValidationException::class)]
+#[CoversClass(AllOf::class)]
+#[CoversClass(Components::class)]
+#[CoversClass(Contact::class)]
+#[CoversClass(ExternalDocs::class)]
+#[CoversClass(Info::class)]
+#[CoversClass(MediaType::class)]
+#[CoversClass(OAuthFlow::class)]
+#[CoversClass(Operation::class)]
+#[CoversClass(Parameter::class)]
+#[CoversClass(PathItem::class)]
+#[CoversClass(RequestBody::class)]
+#[CoversClass(Response::class)]
+#[CoversClass(Schema::class)]
+#[CoversClass(SecurityRequirement::class)]
+#[CoversClass(SecurityScheme::class)]
+#[CoversClass(Server::class)]
+#[CoversClass(Tag::class)]
+#[CoversClass(OpenApi::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class OpenApiTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function all_properties_works_and_validation_passes()
     {
         // Create a tag.
@@ -156,7 +179,7 @@ class OpenApiTest extends TestCase
             ->tags($tag)
             ->externalDocs($externalDocs);
 
-        $exampleResponse = file_get_contents(realpath(__DIR__) . '/storage/example_response.json');
+        $exampleResponse = file_get_contents(realpath(__DIR__).'/storage/example_response.json');
 
         $this->assertEquals(
             json_decode($exampleResponse, true),
@@ -166,7 +189,7 @@ class OpenApiTest extends TestCase
         $openApi->validate();
     }
 
-    /** @test */
+    #[Test]
     public function validate()
     {
         $exceptionThrown = false;
@@ -186,8 +209,7 @@ class OpenApiTest extends TestCase
                 );
 
             $openApi->validate();
-        }
-        catch(ValidationException $exception) {
+        } catch (ValidationException $exception) {
             $exceptionThrown = true;
 
             $this->assertCount(3, $exception->getErrors());

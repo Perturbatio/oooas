@@ -11,10 +11,20 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\MediaType;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(Example::class)]
+#[CoversClass(Header::class)]
+#[CoversClass(Link::class)]
+#[CoversClass(MediaType::class)]
+#[CoversClass(Response::class)]
+#[CoversClass(Schema::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class ResponseTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function create_with_all_parameters_works()
     {
         $header = Header::create('HeaderName')
@@ -79,7 +89,7 @@ class ResponseTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function create_with_ok_method_works()
     {
         $response = Response::ok();
@@ -88,7 +98,7 @@ class ResponseTest extends TestCase
         $this->assertEquals('OK', $response->description);
     }
 
-    /** @test */
+    #[Test]
     public function create_with_created_method_works()
     {
         $response = Response::created();
@@ -97,7 +107,7 @@ class ResponseTest extends TestCase
         $this->assertEquals('Created', $response->description);
     }
 
-    /** @test */
+    #[Test]
     public function create_with_movedPermanently_method_works()
     {
         $response = Response::movedPermanently();
@@ -106,7 +116,7 @@ class ResponseTest extends TestCase
         $this->assertEquals('Moved Permanently', $response->description);
     }
 
-    /** @test */
+    #[Test]
     public function create_with_movedTemporarily_method_works()
     {
         $response = Response::movedTemporarily();
@@ -115,7 +125,7 @@ class ResponseTest extends TestCase
         $this->assertEquals('Moved Temporarily', $response->description);
     }
 
-    /** @test */
+    #[Test]
     public function create_with_badRequest_method_works()
     {
         $response = Response::badRequest();
@@ -124,7 +134,7 @@ class ResponseTest extends TestCase
         $this->assertEquals('Bad Request', $response->description);
     }
 
-    /** @test */
+    #[Test]
     public function create_with_unauthorized_method_works()
     {
         $response = Response::unauthorized();
@@ -133,7 +143,7 @@ class ResponseTest extends TestCase
         $this->assertEquals('Unauthorized', $response->description);
     }
 
-    /** @test */
+    #[Test]
     public function create_with_notFound_method_works()
     {
         $response = Response::notFound();
@@ -142,7 +152,7 @@ class ResponseTest extends TestCase
         $this->assertEquals('Not Found', $response->description);
     }
 
-    /** @test */
+    #[Test]
     public function create_with_unprocessableEntity_method_works()
     {
         $response = Response::unprocessableEntity();
@@ -151,7 +161,7 @@ class ResponseTest extends TestCase
         $this->assertEquals('Unprocessable Entity', $response->description);
     }
 
-    /** @test */
+    #[Test]
     public function create_with_tooManyRequests_method_works()
     {
         $response = Response::tooManyRequests();
@@ -160,7 +170,7 @@ class ResponseTest extends TestCase
         $this->assertEquals('Too Many Requests', $response->description);
     }
 
-    /** @test */
+    #[Test]
     public function create_with_internalServerError_method_works()
     {
         $response = Response::internalServerError();

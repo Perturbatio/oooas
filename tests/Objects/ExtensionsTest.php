@@ -9,14 +9,25 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\PathItem;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(PropertyDoesNotExistException::class)]
+#[CoversClass(Components::class)]
+#[CoversClass(Operation::class)]
+#[CoversClass(PathItem::class)]
+#[CoversClass(Response::class)]
+#[CoversClass(Schema::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class ExtensionsTest extends TestCase
 {
     /**
-     * @test
-     * @dataProvider schemasDataProvider
-     * @param string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema $schema
+     * @param  string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema  $schema
      */
+    #[Test]
+    #[DataProvider('schemasDataProvider')]
     public function create_with_extensions($schema)
     {
         $object = $schema::create()
@@ -38,7 +49,7 @@ class ExtensionsTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function can_unset_extensions()
     {
         $object = Schema::create()
@@ -59,7 +70,7 @@ class ExtensionsTest extends TestCase
     /**
      * @test
      * @dataProvider schemasDataProvider
-     * @param string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema $schema
+     * @param  string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema  $schema
      */
     public function get_single_extension($schema)
     {
@@ -71,7 +82,7 @@ class ExtensionsTest extends TestCase
     /**
      * @test
      * @dataProvider schemasDataProvider
-     * @param string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema $schema
+     * @param  string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema  $schema
      */
     public function get_single_extension_does_not_exist($schema)
     {
@@ -85,7 +96,7 @@ class ExtensionsTest extends TestCase
     /**
      * @test
      * @dataProvider schemasDataProvider
-     * @param string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema $schema
+     * @param  string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema  $schema
      */
     public function get_all_extensions($schema)
     {
@@ -103,7 +114,7 @@ class ExtensionsTest extends TestCase
     /**
      * @return array
      */
-    public function schemasDataProvider(): array
+    public static function schemasDataProvider(): array
     {
         return [
             [Components::class],
