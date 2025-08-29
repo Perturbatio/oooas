@@ -68,10 +68,10 @@ class ExtensionsTest extends TestCase
     }
 
     /**
-     * @test
-     * @dataProvider schemasDataProvider
      * @param  string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema  $schema
      */
+    #[Test]
+    #[DataProvider('schemasDataProvider')]
     public function get_single_extension($schema)
     {
         $object = $schema::create()->x('foo', 'bar');
@@ -80,10 +80,10 @@ class ExtensionsTest extends TestCase
     }
 
     /**
-     * @test
-     * @dataProvider schemasDataProvider
      * @param  string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema  $schema
      */
+    #[Test]
+    #[DataProvider('schemasDataProvider')]
     public function get_single_extension_does_not_exist($schema)
     {
         $object = $schema::create()->x('foo', 'bar');
@@ -94,10 +94,10 @@ class ExtensionsTest extends TestCase
     }
 
     /**
-     * @test
-     * @dataProvider schemasDataProvider
      * @param  string|\GoldSpecDigital\ObjectOrientedOAS\Objects\Schema  $schema
      */
+    #[DataProvider('schemasDataProvider')]
+    #[Test]
     public function get_all_extensions($schema)
     {
         $object = $schema::create();
