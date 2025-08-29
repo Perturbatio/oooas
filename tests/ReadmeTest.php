@@ -13,10 +13,23 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Tag;
 use GoldSpecDigital\ObjectOrientedOAS\OpenApi;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(Tag::class)]
+#[CoversClass(Info::class)]
+#[CoversClass(Schema::class)]
+#[CoversClass(Response::class)]
+#[CoversClass(Operation::class)]
+#[CoversClass(PathItem::class)]
+#[CoversClass(OpenApi::class)]
+#[CoversClass(MediaType::class)]
+#[CoversClass(AllOf::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class ReadmeTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function the_readme_example()
     {
         // Create a tag for all the user endpoints.
@@ -66,7 +79,7 @@ class ReadmeTest extends TestCase
             ->paths($usersPath)
             ->tags($usersTag);
 
-        $readmeExample = file_get_contents(realpath(__DIR__) . '/storage/readme_example.json');
+        $readmeExample = file_get_contents(realpath(__DIR__).'/storage/readme_example.json');
 
         $this->assertEquals(
             json_decode($readmeExample, true),
@@ -74,7 +87,7 @@ class ReadmeTest extends TestCase
         );
     }
 
-    /** @test */
+    #[Test]
     public function setting_and_unsetting_properties()
     {
         $info = Info::create()
@@ -94,7 +107,7 @@ class ReadmeTest extends TestCase
         $this->assertEquals([], $openApi->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function unsetting_variadic_methods()
     {
         $path = PathItem::create()
@@ -114,7 +127,7 @@ class ReadmeTest extends TestCase
         $this->assertEquals([], $openApi->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function retrieving_properties()
     {
         $info = Info::create()->title('Example API');
@@ -122,7 +135,7 @@ class ReadmeTest extends TestCase
         $this->assertEquals('Example API', $info->title);
     }
 
-    /** @test */
+    #[Test]
     public function object_id()
     {
         $schema = Schema::create()
@@ -145,7 +158,7 @@ class ReadmeTest extends TestCase
         ], $schema->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function simpler_object_id()
     {
         $schema = Schema::object()
@@ -167,7 +180,7 @@ class ReadmeTest extends TestCase
         ], $schema->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function dollar_ref()
     {
         $schema = AllOf::create()

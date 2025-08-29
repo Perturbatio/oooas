@@ -7,10 +7,16 @@ namespace GoldSpecDigital\ObjectOrientedOAS\Tests\Objects;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Server;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\ServerVariable;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(Server::class)]
+#[CoversClass(ServerVariable::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class ServerTestTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function create_with_all_parameters_works()
     {
         $serverVariable = ServerVariable::create('ServerVariableName')
@@ -32,7 +38,7 @@ class ServerTestTest extends TestCase
         ], $server->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function variables_are_supported()
     {
         $serverVariable = ServerVariable::create('username')

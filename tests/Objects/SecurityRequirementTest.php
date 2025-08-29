@@ -9,10 +9,18 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\SecurityRequirement;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\SecurityScheme;
 use GoldSpecDigital\ObjectOrientedOAS\OpenApi;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(OAuthFlow::class)]
+#[CoversClass(SecurityRequirement::class)]
+#[CoversClass(SecurityScheme::class)]
+#[CoversClass(OpenApi::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class SecurityRequirementTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function create_with_all_parameters_works()
     {
         $oauthFlow = OAuthFlow::create()
@@ -37,7 +45,7 @@ class SecurityRequirementTest extends TestCase
         ], $openApi->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function create_with_no_scopes_works()
     {
         $securityScheme = SecurityScheme::create('OAuth2');

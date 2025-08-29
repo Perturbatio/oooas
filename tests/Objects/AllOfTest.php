@@ -8,10 +8,17 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\AllOf;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\MediaType;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(Schema::class)]
+#[CoversClass(AllOf::class)]
+#[CoversClass(MediaType::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class AllOfTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function two_schemas_work()
     {
         $schema1 = Schema::string();
@@ -32,7 +39,7 @@ class AllOfTest extends TestCase
         ], $allOf->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function two_schemas_as_response_work()
     {
         $schema1 = Schema::string();

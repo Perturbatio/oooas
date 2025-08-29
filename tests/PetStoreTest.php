@@ -18,10 +18,28 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Server;
 use GoldSpecDigital\ObjectOrientedOAS\OpenApi;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(OpenApi::class)]
+#[CoversClass(Info::class)]
+#[CoversClass(Contact::class)]
+#[CoversClass(License::class)]
+#[CoversClass(Server::class)]
+#[CoversClass(PathItem::class)]
+#[CoversClass(Operation::class)]
+#[CoversClass(Parameter::class)]
+#[CoversClass(RequestBody::class)]
+#[CoversClass(Response::class)]
+#[CoversClass(MediaType::class)]
+#[CoversClass(Components::class)]
+#[CoversClass(Schema::class)]
+#[CoversClass(AllOf::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class PetStoreTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function pet_store_example()
     {
         $contact = Contact::create()
@@ -174,7 +192,7 @@ class PetStoreTest extends TestCase
             ->paths($petRoot, $petNested)
             ->components($components);
 
-        $exampleResponse = file_get_contents(realpath(__DIR__) . '/storage/petstore_expanded.json');
+        $exampleResponse = file_get_contents(realpath(__DIR__).'/storage/petstore_expanded.json');
 
         $this->assertEquals(
             json_decode($exampleResponse, true),

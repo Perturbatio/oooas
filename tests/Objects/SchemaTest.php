@@ -11,10 +11,20 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\OneOf;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Xml;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(Discriminator::class)]
+#[CoversClass(ExternalDocs::class)]
+#[CoversClass(MediaType::class)]
+#[CoversClass(OneOf::class)]
+#[CoversClass(Schema::class)]
+#[CoversClass(Xml::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class SchemaTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function create_array_with_all_parameters_works()
     {
         $schema = Schema::create()
@@ -66,7 +76,7 @@ class SchemaTest extends TestCase
         ], $response->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function create_boolean_with_all_parameters_works()
     {
         $schema = Schema::create()
@@ -104,7 +114,7 @@ class SchemaTest extends TestCase
         ], $response->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function create_integer_with_all_parameters_works()
     {
         $schema = Schema::create()
@@ -154,7 +164,7 @@ class SchemaTest extends TestCase
         ], $response->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function create_number_with_all_parameters_works()
     {
         $schema = Schema::create()
@@ -202,7 +212,7 @@ class SchemaTest extends TestCase
         ], $response->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function create_object_with_all_parameters_works()
     {
         $property = Schema::string('id')
@@ -260,7 +270,7 @@ class SchemaTest extends TestCase
         ], $response->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function create_string_with_all_parameters_works()
     {
         $schema = Schema::create()
@@ -306,7 +316,7 @@ class SchemaTest extends TestCase
         ], $response->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function create_array_with_ref_works()
     {
         $schema = Schema::array()
@@ -322,7 +332,7 @@ class SchemaTest extends TestCase
         ], $schema->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function create_object_with_oneOf_works()
     {
         $string = Schema::string();

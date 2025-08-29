@@ -8,10 +8,17 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\Components;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\OAuthFlow;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\SecurityScheme;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(Components::class)]
+#[CoversClass(OAuthFlow::class)]
+#[CoversClass(SecurityScheme::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class SecuritySchemeTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function create_with_all_parameters_works()
     {
         $oauthFlow = OAuthFlow::create()

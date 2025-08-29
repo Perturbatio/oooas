@@ -5,10 +5,15 @@ namespace GoldSpecDigital\ObjectOrientedOAS\Tests\Utilities;
 use GoldSpecDigital\ObjectOrientedOAS\OpenApi;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
 use GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(Arr::class)]
+#[CoversClass(OpenApi::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class ArrTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function null_values_are_removed_from_array()
     {
         $array = ['test' => null];
@@ -18,7 +23,7 @@ class ArrTest extends TestCase
         $this->assertCount(0, $array);
     }
 
-    /** @test */
+    #[Test]
     public function non_null_values_remain()
     {
         $array = [

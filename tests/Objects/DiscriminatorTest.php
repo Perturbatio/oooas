@@ -7,10 +7,16 @@ namespace GoldSpecDigital\ObjectOrientedOAS\Tests\Objects;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Discriminator;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(Discriminator::class)]
+#[CoversClass(Schema::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class DiscriminatorTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function create_with_all_parameters_works()
     {
         $discriminator = Discriminator::create()

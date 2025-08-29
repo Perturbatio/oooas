@@ -10,10 +10,19 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\MediaType;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use GoldSpecDigital\ObjectOrientedOAS\Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass(Encoding::class)]
+#[CoversClass(Example::class)]
+#[CoversClass(MediaType::class)]
+#[CoversClass(Response::class)]
+#[CoversClass(Schema::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Arr::class)]
+#[CoversClass(\GoldSpecDigital\ObjectOrientedOAS\Utilities\Extensions::class)]
 class MediaTypeTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function create_with_all_parameters_works()
     {
         $mediaType = MediaType::create()
@@ -44,7 +53,7 @@ class MediaTypeTest extends TestCase
         ], $response->toArray());
     }
 
-    /** @test */
+    #[Test]
     public function create_example_with_ref_Works()
     {
         $mediaType = MediaType::create()
